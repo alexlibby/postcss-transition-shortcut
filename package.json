@@ -4,8 +4,8 @@
   "description": "A shortcut plugin that allows you to use shortcut transition properties in CSS",
   "main": "index.js",
   "scripts": {
-		"test": "test.js"
-	},
+    "test": "test.js"
+  },
   "keywords": [
     "postcss",
     "postcss-plugin",
