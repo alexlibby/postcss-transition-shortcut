@@ -14,6 +14,14 @@
   ],
   "author": "Alex Libby",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexlibby/postcss-transition-shortcut.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alexlibby/postcss-transition-shortcut/issues"
+  },
+  "homepage": "https://github.com/alexlibby/postcss-transition-shortcut",
   "dependencies": {
     "postcss": "^5.0.13"
   }
