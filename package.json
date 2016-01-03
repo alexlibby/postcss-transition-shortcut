@@ -14,6 +14,7 @@
   ],
   "author": "Alex Libby",
   "license": "MIT",
+  "readme": "README.md",
   "repository": {
     "type": "git",
     "url": "https://github.com/alexlibby/postcss-transition-shortcut.git"
