@@ -28,5 +28,40 @@
 
 <p>The <code>delay</code> attribute maps to the CSS3 <code>transition-delay</code>, and specifies the delay that should elapse before the animation starts.</p>
 
+<h2><a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
+<p>You just need to follow these two steps to use <a href="https://github.com/alexlibby/postcss-transition-shortcut">PostCSS Transition Shortcut</a>:</p>
+
+<ol>
+<li>Add <a href="https://github.com/postcss/postcss">PostCSS</a> to your build tool.</li>
+<li>Add <a href="https://github.com/alexlibby/postcss-transition-shortcut">PostCSS Transition Shortcut</a> as a PostCSS process.</li>
+</ol>
+
+<div class="highlight highlight-source-shell"><pre>npm install postcss-transform-shortcut --save-dev</pre></div>
+
+<h3><a id="user-content-node" class="anchor" href="#node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>postcss-transform-shortcut<span class="pl-pds">'</span></span>);</pre></div>
+
+<h3><a id="user-content-Gulp" class="anchor" href="#Gulp" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gulp</h3>
+
+<p>Add <a href="https://github.com/nDmitry/Gulp-postcss">Gulp PostCSS</a> to your build tool:</p>
+
+<div class="highlight highlight-source-shell"><pre>npm install postcss-transform-shortcut --save-dev</pre></div>
+
+<p>Enable <a href="https://github.com/alexlibby/postcss-transition-shortcut">PostCSS Transition Shortcut</a> within your Gulpfile:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-pds">'</span>Gulp-postcss<span class="pl-pds">'</span></span>);
+
+<span class="pl-smi">var gulp = require('gulp');
+var postcss = require('gulp-postcss');
+var transition = require('postcss-transition-shortcut');
+
+var processors = [ transition() ];
+
+gulp.task('default', function () {
+    return gulp.src('./src/*.css')
+        .pipe(postcss(processors))
+        .pipe(gulp.dest('./dest'));
+});</pre></div>
 </article>
