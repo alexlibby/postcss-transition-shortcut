@@ -1,20 +1,15 @@
+'use strict';
+
 var postcss = require('postcss');
-var expect  = require('chai').expect;
+var transform = require('./index');
+var test = require('tape');
 
-var test = function (input, output, opts, done) {
-	postcss([ plugin(opts) ]).process(input).then(function (result) {
-		expect(result.css).to.eql(output);
+function transitionShrtcut(opts) {
+    return postcss().use(transform(opts));
+}
 
-		expect(result.warnings()).to.be.empty;
+test('transitionShtct', function (t) {
+    t.plan(1);
 
-		done();
-	}).catch(function (error) {
-		done(error);
-	});
-};
-
-describe('postcss-transform-shortcut', function () {
-	it('does combine all three', function (done) {
-		test('div {\n\tproperty: all;\n\tduration: 1s;\n\ttiming: ease-in-out;\n\tdelay: 1s;\n}}', 'div {\n\t {	transition: all 1s ease-in-out 1s;};\n}', { }, done);
-	});
+    t.equal( transitionShrtcut().process('div { property: all; duration: 1s; timing: ease-in-out; delay: 1s; }').css, 'div { transition: all 1s ease-in-out 1s; }', 'should merge properties together');
 });
