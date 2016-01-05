@@ -10,8 +10,6 @@ module.exports = postcss.plugin('postcss-transition-shortcut', function (options
 		delay: '1s'
 	};
 
-	var splice = Array.prototype.splice;
-
 	return function (css) {
 		css.walkRules(function (rule) {
 			var transitionRule;
