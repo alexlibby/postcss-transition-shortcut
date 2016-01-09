@@ -1,15 +1,18 @@
-'use strict';
+import postcss from 'postcss';
+import test from 'ava';
 
-var postcss = require('postcss');
-var transform = require('./index');
-var test = require('tape');
+import plugin from './';
 
-function transitionShrtcut(opts) {
-    return postcss().use(transform(opts));
+function run(t, input, output, opts = { }) {
+    return postcss([ plugin(opts) ]).process(input)
+        .then( result => {
+            t.same(result.css, output);
+            t.same(result.warnings().length, 0);
+        });
 }
 
-test('transitionShtct', function (t) {
-    t.plan(1);
-
-    t.equal( transitionShrtcut().process('div { property: all; duration: 1s; timing: ease-in-out; delay: 1s; }').css, 'div { transition: all 1s ease-in-out 1s; }', 'should merge properties together');
+test('transitionShtct', t => {
+    return run( t,
+    	'div { property: all; duration: 1s; timing: ease-in-out; delay: 1s; }',
+    	'div { transition: all 1s ease-in-out 1s; }', { });
 });
